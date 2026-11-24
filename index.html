@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold fs-3" href="#">StudentHub</a>
+            <span class="text-white">Admin Dashboard</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-2 sidebar p-4">
+                <h5 class="text-white mb-4">MENU</h5>
+
+                <a href="#" class="sidebar-link active">Dashboard</a>
+                <a href="#students" class="sidebar-link">Students</a>
+                <a href="#students" class="sidebar-link">Manage Students</a>
+            </div>
+
+            <div class="col-lg-10 p-4 main-content">
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+                    <div>
+                        <h2 class="fw-bold">Dashboard</h2>
+                        <p class="text-muted">Welcome to Student Management System</p>
+                    </div>
+
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal" id="addStudentButton">
+                        + Add Student
+                    </button>
+                </div>
+
+                <div class="row g-4 mb-5">
+
+                    <div class="col-md-4">
+                        <div class="stat-card bg-primary text-white">
+                            <h6>Total Students</h6>
+                            <h2 id="totalStudents">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="stat-card bg-success text-white">
+                            <h6>Departments</h6>
+                            <h2 id="totalDepartments">0</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="stat-card bg-warning text-dark">
+                            <h6>Courses</h6>
+                            <h2 id="totalCourses">0</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="students">
+
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+                        <h3 class="fw-bold">Student Details</h3>
+
+                        <div class="d-flex gap-2 flex-wrap">
+                            <input type="text" class="form-control" id="searchStudent" placeholder="Search student">
+
+                            <select class="form-select" id="departmentFilter">
+                                <option value="">All Departments</option>
+                                <option value="CSE">CSE</option>
+                                <option value="ECE">ECE</option>
+                                <option value="IT">IT</option>
+                                <option value="EEE">EEE</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive bg-white rounded shadow-sm">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Year</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="studentTable">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="text-center text-muted mt-4 d-none" id="noStudents">
+                        No students found.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="studentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Add Student</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="studentForm">
+
+                        <input type="hidden" id="editIndex">
+
+                        <div class="mb-3">
+                            <label class="form-label">Student Name</label>
+                            <input type="text" class="form-control" id="studentName" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="studentEmail" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <select class="form-select" id="studentDepartment" required>
+                                <option value="">Select Department</option>
+                                <option value="CSE">CSE</option>
+                                <option value="ECE">ECE</option>
+                                <option value="IT">IT</option>
+                                <option value="EEE">EEE</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Year</label>
+                            <select class="form-select" id="studentYear" required>
+                                <option value="">Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100" id="saveButton">
+                            Save Student
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Student Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="studentDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
+
+<!-- 
+StudentHub-Bootstrap-Student-Management
+A responsive Student Management Dashboard built using HTML, CSS, Bootstrap 5, and JavaScript. Features student CRUD operations, search, department filtering, dashboard statistics, and LocalStorage data persistence. -->
