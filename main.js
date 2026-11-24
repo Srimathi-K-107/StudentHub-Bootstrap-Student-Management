@@ -1,5 +1,66 @@
-
-let students = JSON.parse(localStorage.getItem("students")) || [];
+let data=[
+    {
+        name: "Arun Kumar",
+        email: "arun@gmail.com",
+        department: "CSE",
+        year: "3rd Year"
+    },
+    {
+        name: "Priya S",
+        email: "priya@gmail.com",
+        department: "ECE",
+        year: "2nd Year"
+    },
+    {
+        name: "Karthik R",
+        email: "karthik@gmail.com",
+        department: "IT",
+        year: "4th Year"
+    },
+    {
+        name: "Divya M",
+        email: "divya@gmail.com",
+        department: "EEE",
+        year: "1st Year"
+    },
+    {
+        name: "Santhosh K",
+        email: "santhosh@gmail.com",
+        department: "CSE",
+        year: "2nd Year"
+    },
+    {
+        name: "Nithya P",
+        email: "nithya@gmail.com",
+        department: "ECE",
+        year: "3rd Year"
+    },
+    {
+        name: "Vijay S",
+        email: "vijay@gmail.com",
+        department: "Mechanical",
+        year: "4th Year"
+    },
+    {
+        name: "Harini T",
+        email: "harini@gmail.com",
+        department: "IT",
+        year: "1st Year"
+    },
+    {
+        name: "Rahul D",
+        email: "rahul@gmail.com",
+        department: "CSE",
+        year: "3rd Year"
+    },
+    {
+        name: "Sneha V",
+        email: "sneha@gmail.com",
+        department: "Civil",
+        year: "2nd Year"
+    }
+]
+let students = JSON.parse(localStorage.getItem("students")) || data;
 
 const studentForm = document.getElementById("studentForm");
 const studentTable = document.getElementById("studentTable");
