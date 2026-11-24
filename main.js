@@ -38,7 +38,7 @@ let data=[
     {
         name: "Vijay S",
         email: "vijay@gmail.com",
-        department: "Mechanical",
+        department: "EEE",
         year: "4th Year"
     },
     {
@@ -56,7 +56,7 @@ let data=[
     {
         name: "Sneha V",
         email: "sneha@gmail.com",
-        department: "Civil",
+        department: "IT",
         year: "2nd Year"
     }
 ]
